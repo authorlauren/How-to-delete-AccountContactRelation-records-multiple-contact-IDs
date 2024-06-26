@@ -1,0 +1,12 @@
+// Define a set of Contact IDs
+Set<Id> contactIds = new Set<Id>{ 'Your first contactID', 'Your second contactID', 'Your third contactID' }; //Add as much contactID as you want
+
+// Query AccountContactRelation records for the given Contact IDs
+List<AccountContactRelation> accountContacts = [
+    SELECT Id 
+    FROM AccountContactRelation 
+    WHERE ContactId IN :contactIds AND IsDirect = false
+];
+
+// Delete the queried AccountContactRelation records
+delete accountContacts;
